@@ -1,0 +1,9 @@
+[Desktop Entry]
+Name=Solitaire Games
+Comment=A collection of solitaire card games
+Exec=qmlscene %U solitaire-games.qml
+Icon=solitaire-games.png
+Terminal=false
+Type=Application
+Categories=Qt;Game;CardGame;
+X-Ubuntu-Touch=true

@@ -1,0 +1,28 @@
+Source: solitaire-games
+Section: x11
+Priority: optional
+Maintainer: Sam Segers <sam.sgrs@gmail.com>
+Build-Depends-Indep: debhelper (>= 8.0.0)
+Standards-Version: 3.9.4
+Homepage: https://github.com/labsin/solitaire-games
+Vcs-Git: git://github.com/labsin/solitaire-games.git
+
+Package: solitaire-games
+Architecture: all
+Depends: ${misc:Depends},
+         qtdeclarative5-qtquick2-plugin,
+         qtdeclarative5-u1db1.0,
+         qtdeclarative5-ubuntu-ui-toolkit-plugin|qt-components-ubuntu,
+         qmlscene
+Description: A collection of solitaire card games
+ Solitaire Games is a Ubuntu Touch Qml application. It contains a set of
+ different solitiare card games to play by yourself. It has an adaptive layout.
+ .
+ The games include:
+ * Klondike
+ * Spider
+ * Aces Up
+ * Pyramid
+ .
+ The app was writen to compete in the 2013 Ubuntu App Showdown.
+

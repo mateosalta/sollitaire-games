@@ -1,0 +1,492 @@
+<games
+ xmlns:its="http://www.w3.org/2005/11/its"
+ its:version="1.0" xml:lang="en">
+  <game>
+    <title>Klondike (3 cards)</title>
+    <path its:translate="no">Klondike.qml</path>
+    <db-name its:translate="no">klondike3</db-name>
+    <info>&lt;b&gt;&lt;i&gt;Klondike&lt;/i&gt;&lt;/b&gt; is a patience game (solitaire card game).
+    Many people refer to Klondike as &lt;b&gt;&lt;i&gt;patience&lt;/i&gt;&lt;/b&gt; or &lt;b&gt;&lt;i&gt;solitaire&lt;/i&gt;&lt;/b&gt;,
+    it being one of the better known of the family of patience games.</info>
+    <rules>
+    &lt;h3&gt;Goal:&lt;/h3&gt;
+    Move all the card to the Foundations&lt;br&gt;
+    &lt;h3&gt;Foundation:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build up from rank and from suit from Ace to King
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Tableau:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build down by rank and by alternating color
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+        &lt;li&gt;
+        Complete or partial correct piles may be moved
+        &lt;/li&gt;
+        &lt;li&gt;
+        An empty spot may be filled with a King or a pile starting with a King
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Stock:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Click to face up and move 3 cards to the Waste
+        &lt;/li&gt;
+        &lt;li&gt;
+        When empty, click to face down and move all cards from the Waste to the Stock
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Waste:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Top card may be moved
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    </rules>
+  </game>
+  <game>
+    <title>Klondike (1 card)</title>
+    <path its:translate="no">1CKlondike.qml</path>
+    <db-name its:translate="no">klondike1</db-name>
+    <info>&lt;b&gt;&lt;i&gt;Klondike&lt;/i&gt;&lt;/b&gt; is a patience game (solitaire card game).
+    Many people refer to Klondike as &lt;b&gt;&lt;i&gt;patience&lt;/i&gt;&lt;/b&gt; or &lt;b&gt;&lt;i&gt;solitaire&lt;/i&gt;&lt;/b&gt;,
+    it being one of the better known of the family of patience games.</info>
+    <rules>
+    &lt;h3&gt;Goal:&lt;/h3&gt;
+    Move all the card to the Foundations&lt;br&gt;
+    &lt;h3&gt;Foundation:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build up from rank and from suit from Ace to King
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Tableau:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build down by rank and by alternating color
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+        &lt;li&gt;
+        Complete or partial correct piles may be moved
+        &lt;/li&gt;
+        &lt;li&gt;
+        An empty spot may be filled with a King or a pile starting with a King
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Stock:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Click to face up and move 1 cards to the Waste
+        &lt;/li&gt;
+        &lt;li&gt;
+        When empty, click to face down and move all cards from the Waste to the Stock
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Waste:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Top card may be moved
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    </rules>
+  </game>
+  <game>
+    <title>Spider</title>
+    <path its:translate="no">Spider.qml</path>
+    <db-name its:translate="no">spider</db-name>
+    <info>&lt;b&gt;&lt;i&gt;Spider&lt;/i&gt;&lt;/b&gt; is a type of Patience game.
+    It is one of the more popular two-deck solitaire games.</info>
+    <rules>
+    &lt;h3&gt;Goal:&lt;/h3&gt;
+    Move all the card to the Foundations&lt;br&gt;
+    &lt;h3&gt;Foundation:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Automaticly filled when a Tableau spot contains a pile ordered down by rank and by suit from King to Ace
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Tableau:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build down by rank
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+        &lt;li&gt;
+        Complete or partial correct piles may be moved as long as they share the same suit
+        &lt;/li&gt;
+        &lt;li&gt;
+        An empty spot may be filled with any card or correct piles with the same suit
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Stock:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Can only be click if all Tableau spots are empty
+        &lt;/li&gt;
+        &lt;li&gt;
+        Click to face up and move one card to each Tableau spot
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    </rules>
+  </game>
+  <game>
+    <title>Spider (2 suits)</title>
+    <path its:translate="no">2CSpider.qml</path>
+    <db-name its:translate="no">spider2</db-name>
+    <info>&lt;b&gt;&lt;i&gt;Spider&lt;/i&gt;&lt;/b&gt; is a type of Patience game.
+    It is one of the more popular two-deck solitaire games.
+    This type is played with only 2 suits.</info>
+    <rules>
+    &lt;h3&gt;Goal:&lt;/h3&gt;
+    Move all the card to the Foundations&lt;br&gt;
+    &lt;h3&gt;Foundation:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Automaticly filled when a Tableau spot contains a pile ordered down by rank and by suit from King to Ace
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Tableau:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build down by rank
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+        &lt;li&gt;
+        Complete or partial correct piles may be moved as long as they share the same suit
+        &lt;/li&gt;
+        &lt;li&gt;
+        An empty spot may be filled with any card or correct piles with the same suit
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Stock:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Can only be click if all Tableau spots are empty
+        &lt;/li&gt;
+        &lt;li&gt;
+        Click to face up and move one card to each Tableau spot
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    </rules>
+  </game>
+  <game>
+    <title>Spider (1 suit)</title>
+    <path its:translate="no">1CSpider.qml</path>
+    <db-name its:translate="no">spider1</db-name>
+    <info>&lt;b&gt;&lt;i&gt;Spider&lt;/i&gt;&lt;/b&gt; is a type of Patience game.
+    It is one of the more popular two-deck solitaire games.
+    This type is played with only 1 suit.</info>
+    <rules>
+    &lt;h3&gt;Goal:&lt;/h3&gt;
+    Move all the card to the Foundations&lt;br&gt;
+    &lt;h3&gt;Foundation:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Automaticly filled when a Tableau spot contains a pile ordered down by rank and by suit from King to Ace
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Tableau:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build down by rank
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+        &lt;li&gt;
+        Complete or partial correct piles may be moved as long as they share the same suit
+        &lt;/li&gt;
+        &lt;li&gt;
+        An empty spot may be filled with any card or correct piles with the same suit
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Stock:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Can only be click if all Tableau spots are empty
+        &lt;/li&gt;
+        &lt;li&gt;
+        Click to face up and move one card to each Tableau spot
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    </rules>
+  </game>
+  <game>
+    <title>Pyramid</title>
+    <path its:translate="no">Pyramid.qml</path>
+    <db-name its:translate="no">pyramid</db-name>
+    <info>&lt;b&gt;&lt;i&gt;Pyramid&lt;/i&gt;&lt;/b&gt; is a solitaire game where the object is
+    to get all the cards from the pyramid to the Foundation.</info>
+    <rules>
+    &lt;h3&gt;Goal:&lt;/h3&gt;
+    Move all the card to the Foundation&lt;br&gt;
+    &lt;h3&gt;Foundation:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Paired cards move here
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Tableau:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Only exposed cards may be moved
+        &lt;/li&gt;
+        &lt;li&gt;
+        If you drop a card over another that combine to 13, then they are moved to the Foundation
+        &lt;/li&gt;
+        &lt;li&gt;
+        King is 13, Queen 12 and Jack 11
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Stock:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Click to top face down card to face it up
+        &lt;/li&gt;
+        &lt;li&gt;
+        Face up card may be moved
+        &lt;/li&gt;
+        &lt;li&gt;
+        Click face up card to move it to Waste
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Waste:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Top card may be moved
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    </rules>
+  </game>
+  <game>
+    <title>Aces Up</title>
+    <path its:translate="no">AcesUp.qml</path>
+    <db-name its:translate="no">acesup</db-name>
+    <info>&lt;b&gt;&lt;i&gt;Aces Up&lt;/i&gt;&lt;/b&gt; (also known as &lt;b&gt;&lt;i&gt;Idiot's Delight&lt;/i&gt;&lt;/b&gt;,
+    &lt;b&gt;&lt;i&gt;Once in a Lifetime&lt;/i&gt;&lt;/b&gt;, &lt;b&gt;&lt;i&gt;Ace of the Pile&lt;/i&gt;&lt;/b&gt;,
+    &lt;b&gt;&lt;i&gt;Rocket to the Top&lt;/i&gt;&lt;/b&gt;, &lt;b&gt;&lt;i&gt;Firing Squad&lt;/i&gt;&lt;/b&gt;,
+    &lt;b&gt;&lt;i&gt;Loser Solitaire&lt;/i&gt;&lt;/b&gt;, &lt;b&gt;&lt;i&gt;Aces High&lt;/i&gt;&lt;/b&gt;,
+    and &lt;b&gt;&lt;i&gt;Drivel&lt;/i&gt;&lt;/b&gt;)
+    is a solitaire card game using a deck of 52 playing cards.
+    One advantage of this game is its minimal use of space:
+    one can even play it on an area as small as an encyclopedia volume cover.</info>
+    <rules>
+    &lt;h3&gt;Goal:&lt;/h3&gt;
+    Move all the cards except the Aces to the Foundation&lt;br&gt;
+    &lt;h3&gt;Foundation:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Played cards move here
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Tableau:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        If the top card is the same suit but of lower rank than the top card of another Tableau spot,
+        then you can click it to play it to the Foundation
+        &lt;/li&gt;
+        &lt;li&gt;
+        An empty spot may be filled with the top card of another Tableau spot
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Stock:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Click to face up and move one card to each Tableau spot
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    </rules>
+  </game>
+  <game>
+    <title>Freecell</title>
+    <path its:translate="no">Freecell.qml</path>
+    <db-name its:translate="no">freecell</db-name>
+    <info>&lt;b&gt;&lt;i&gt;FreeCell&lt;/i&gt;&lt;/b&gt; is a solitaire-based card game played with a 52-card standard deck.
+    It is fundamentally different from most solitaire games in that very few hands are unsolvable.</info>
+    <rules>
+    &lt;h3&gt;Goal:&lt;/h3&gt;
+    Move all the card to the Foundations&lt;br&gt;
+    &lt;h3&gt;Foundation:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build up from rank and from suit from Ace to King
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Tableau:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build down by rank and by alternating color
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+        &lt;li&gt;
+        Complete or partial correct piles may be moved as long as there are enough empty pots available
+        &lt;/li&gt;
+        &lt;li&gt;
+        An empty spot may be filled with any card
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Cell:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        May only contain one card
+        &lt;/li&gt;
+        &lt;li&gt;
+        Top card may be moved
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    </rules>
+  </game>
+  <game>
+    <title>Baker's Dozen</title>
+    <path its:translate="no">BakersDozen.qml</path>
+    <db-name its:translate="no">bakersdozen</db-name>
+    <info>&lt;b&gt;&lt;i&gt;Baker's Dozen&lt;/i&gt;&lt;/b&gt; is a solitaire card game using a deck of fifty-two playing cards.
+    The game is so called because of the 13 columns in the game, the number in a baker's dozen.</info>
+    <rules>
+    &lt;h3&gt;Goal:&lt;/h3&gt;
+    Move all the card to the Foundations&lt;br&gt;
+    &lt;h3&gt;Foundation:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build up by rank and by suit from Ace to King
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Tableau:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build down by rank
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+        &lt;li&gt;
+        An empty spot may &lt;i&gt;NOT&lt;/i&gt; be filled
+        &lt;/li&gt;
+        &lt;li&gt;
+        All kings are moved to the bottom after dealing
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    </rules>
+  </game>
+  <game>
+    <title>Castles in Spain</title>
+    <path its:translate="no">CastlesInSpain.qml</path>
+    <db-name its:translate="no">castlesinspain</db-name>
+    <info>&lt;b&gt;&lt;i&gt;Castles in Spain&lt;/i&gt;&lt;/b&gt; is a solitaire card game using a deck of fifty-two playing cards.</info>
+    <rules>
+    &lt;h3&gt;Goal:&lt;/h3&gt;
+    Move all the card to the Foundations&lt;br&gt;
+    &lt;h3&gt;Foundation:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build up by rank and by suit from Ace to King
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Tableau:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build down by rank and by alternating color
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+        &lt;li&gt;
+        An empty spot may be filled with any card
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    </rules>
+  </game>
+  <game>
+    <title>Spanish Patience</title>
+    <path its:translate="no">SpanishPatience.qml</path>
+    <db-name its:translate="no">spanishpatience</db-name>
+    <info>&lt;b&gt;&lt;i&gt;Spanish Patience&lt;/i&gt;&lt;/b&gt; is a solitaire card game using a deck of fifty-two playing cards.</info>
+    <rules>
+    &lt;h3&gt;Goal:&lt;/h3&gt;
+    Move all the card to the Foundations&lt;br&gt;
+    &lt;h3&gt;Foundation:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build up by rank from Ace to King
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+    &lt;/ul&gt;
+
+    &lt;h3&gt;Tableau:&lt;/h3&gt;
+    &lt;ul&gt;
+        &lt;li&gt;
+        Build down by rank
+        &lt;/li&gt;
+        &lt;li&gt;
+        The top card may be moved
+        &lt;/li&gt;
+        &lt;li&gt;
+        An empty spot may &lt;i&gt;NOT&lt;/i&gt; be filled
+        &lt;/li&gt;
+        &lt;li&gt;
+        All kings are moved to the bottom after dealing
+        &lt;/li&gt;
+    &lt;/ul&gt;
+    </rules>
+  </game>
+</games>
