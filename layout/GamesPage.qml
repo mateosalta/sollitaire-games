@@ -1,6 +1,6 @@
 import QtQuick 2.9
 import Ubuntu.Components 1.3
-import Ubuntu.Components.Popups 1.2
+import Ubuntu.Components.Popups 1.3
 //import Ubuntu.Components.ListItems 0.1 as ListItem
 
 Page {
@@ -11,7 +11,10 @@ Page {
 
     property alias currentIndex: gameListView.currentIndex
 
-    flickable: null
+    header: PageHeader {
+        id: pageH
+        title: i18n.tr("Games")
+    }
 
     Rectangle {
         anchors.fill: gameListView
@@ -22,12 +25,13 @@ Page {
 
     Component {
         id: gameDelegate
+        // TODO: show if this game has progresses saved ?
 
         ListItem {
-        Label {
-                    text: gamesRepeater.itemAt(index).title
-anchors.centerIn: parent
-                    }
+            Label {
+                text: gamesRepeater.itemAt(index).title
+                anchors.centerIn: parent
+            }
             id: thisItem
 
             onClicked: {
@@ -38,7 +42,7 @@ anchors.centerIn: parent
             }
             onPressAndHold: {
                 if(mainView.small)
-                    PopupUtils.open(infoPopoverComp, thisItem, {"index":index} )
+                PopupUtils.open(infoPopoverComp, thisItem, {"index":index} )
             }
             selected: gameListView.currentItem === thisItem
         }
@@ -49,7 +53,7 @@ anchors.centerIn: parent
         model: gamesModel
         delegate: gameDelegate
 
-        anchors.top: page.top
+        anchors.top: pageH.bottom
         anchors.bottom: page.bottom
         anchors.left: page.left
         currentIndex: -1
@@ -67,7 +71,7 @@ anchors.centerIn: parent
         anchors.left: gameListView.right
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        anchors.top: parent.top
+        anchors.top: pageH.bottom
         visible: !mainView.small
         contentHeight: container.height + container.anchors.topMargin + container.anchors.bottomMargin + startContainer.height
         clip: true
@@ -119,12 +123,12 @@ anchors.centerIn: parent
                 fontSize: "medium"
             }
 
-   ListItem {
+            ListItem {
                 id: divider
                 anchors.leftMargin: units.gu(1)
                 anchors.rightMargin: units.gu(1)
                 visible: gameInfoLabel.text!="" && gameRulesLabel.text!=""
-            } 
+            }
 
             Label {
                 id: gameRulesHeader
@@ -167,14 +171,9 @@ anchors.centerIn: parent
             anchors.verticalCenter: parent.verticalCenter
             anchors.right: parent.right
             anchors.rightMargin: units.gu(5)
-            text: redeal?i18n.tr("Redeal"):i18n.tr("Start")
+            text: i18n.tr("Start")
             enabled: currentIndex!==-1
-            onClicked: {
-                if(redeal)
-                    redealGame()
-                else
-                    startGame(currentIndex)
-            }
+            onClicked: startGame(currentIndex)
         }
     }
 
@@ -205,7 +204,7 @@ anchors.centerIn: parent
 
             AnchorChanges {
                 target: gameListView
-                anchors.right: ""
+                anchors.right: undefined
             }
             PropertyChanges {
                 target: gameListView
@@ -258,8 +257,8 @@ anchors.centerIn: parent
             title: "Info on " + gameTitle
             doneButton: false
             Flickable {
-            anchors.fill: parent
-            contentHeight: label.height
+                anchors.fill: parent
+                contentHeight: label.height
                 Label {
                     color: Theme.palette.normal.overlayText
                     id: label

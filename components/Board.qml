@@ -100,7 +100,7 @@ Item {
     width: parentWidth>minimumWidth?parentWidth:minimumWidth
     height: parentHeight>minimumHeight?parentHeight:minimumHeight
 
-   
+
     onStartMove: {
         History.history.startMove()
     }
@@ -316,7 +316,7 @@ Item {
     }
 
     function preEnd(saveOnQuit) {
-
+        //FIXME: is this useful? what does it do?
         saveGameOnQuit = saveOnQuit
     }
 

@@ -15,13 +15,6 @@ Dialog {
         }
     }
     Button {
-        text: "stats"
-        onClicked: {
-            tabs.selectedTabIndex=2
-            PopupUtils.close(endDialog)
-        }
-    }
-    Button {
         text: "try again"
         visible: !won
         onClicked: {
@@ -37,7 +30,7 @@ Dialog {
             redealGame()
         }
     }
-    Button {
+    Button {    //FIXME: useful?
         text: "new game"
         onClicked: {
             PopupUtils.close(endDialog)
