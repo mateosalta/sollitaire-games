@@ -28,6 +28,9 @@ Page {
         // TODO: show if this game has progresses saved ?
 
         ListItem {
+            property string gameTitle: index==-1?i18n.tr("Select a game"):gamesRepeater.itemAt(index).title
+            property string gameRules: index==-1?"":gamesRepeater.itemAt(index).rules
+            property string gameInfo: index==-1?"":gamesRepeater.itemAt(index).info
             Label {
                 text: gamesRepeater.itemAt(index).title
                 anchors.centerIn: parent
@@ -40,9 +43,18 @@ Page {
                     startGame(index)
                 }
             }
-            onPressAndHold: {
-                if(mainView.small)
-                PopupUtils.open(infoPopoverComp, thisItem, {"index":index} )
+            swipeEnabled: mainView.small
+            trailingActions: ListItemActions {
+                actions: [
+                    Action {
+                        iconName: "info"
+                        onTriggered: PopupUtils.open(infoOrRulesSheed, parent, {"index":index,"gameTitle":gameTitle,"mainText":gameInfo})
+                    },
+                    Action {
+                        iconName: "view-list-symbolic"
+                        onTriggered: PopupUtils.open(infoOrRulesSheed, parent, {"index":index,"gameTitle":gameTitle,"mainText":gameRules})
+                    }
+                ]
             }
             selected: gameListView.currentItem === thisItem
         }
@@ -219,56 +231,24 @@ Page {
     ]
 
     Component {
-        id: infoPopoverComp
-
-        ActionSelectionPopover {
-            property int index: -1
-            property string gameTitle: index==-1?i18n.tr("Select a game"):gamesRepeater.itemAt(index).title
-            property string gameRules: index==-1?"":gamesRepeater.itemAt(index).rules
-            property string gameInfo: index==-1?"":gamesRepeater.itemAt(index).info
-
-
-            id: infoPopover
-            actions: ActionList {
-                Action {
-                    text: "Info"
-                    onTriggered: {
-                        PopupUtils.open(infoOrRulesSheed, parent, {"index":index,"gameTitle":gameTitle,"mainText":gameInfo})
-                    }
-                }
-                Action {
-                    text: "Rules"
-                    onTriggered: {
-                        PopupUtils.open(infoOrRulesSheed, parent, {"index":index,"gameTitle":gameTitle,"mainText":gameRules})
-                    }
-                }
-            }
-        }
-    }
-
-    Component {
         id: infoOrRulesSheed
 
-        DefaultSheet {
+        Dialog {
             property string gameTitle
             property string mainText
 
             id: sheet
             title: "Info on " + gameTitle
-            doneButton: false
-            Flickable {
-                anchors.fill: parent
-                contentHeight: label.height
-                Label {
-                    color: Theme.palette.normal.overlayText
-                    id: label
-                    width: parent.width
-                    text: mainText
-                    wrapMode: Text.WordWrap
-                }
-                clip: true
+            Label {
+                color: Theme.palette.normal.overlayText
+                id: label
+                text: mainText
+                wrapMode: Text.WordWrap
             }
-            onDoneClicked: PopupUtils.close(sheet)
+            Button {
+                text: i18n.tr("Done")
+                onClicked: PopupUtils.close(sheet)
+            }
         }
     }
 }
