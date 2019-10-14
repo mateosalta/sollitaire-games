@@ -1,6 +1,6 @@
 import QtQuick 2.9
 import Ubuntu.Components 1.3
-import Ubuntu.Components.Popups 1.2
+import Ubuntu.Components.Popups 1.3
 
 Page {
     id: gamePage
@@ -126,10 +126,6 @@ Page {
 
     function saveState(saveState, savedIndex, savedSeed) {
         setSaveState(selectedGameDbName, saveState, savedIndex, savedSeed)
-    }
-
-    function removeState() {
-        removeSaveState(selectedGameDbName)
     }
 
     function setSource(path, json) {

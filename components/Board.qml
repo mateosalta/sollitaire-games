@@ -61,8 +61,6 @@ Item {
     property int _amoutMoving: 0
     property int _mouseSingleClickDelay: 150
 
-    property bool saveGameOnQuit: true
-
     property alias dealingStack: dealingStack
     property alias decks: dealingStack.decks
     property alias suits: dealingStack.suits
@@ -300,10 +298,6 @@ Item {
 
         if(_saved)
             return;
-        if(!saveGameOnQuit) {
-            gamePage.removeState()
-            return
-        }
         var json = []
         var saveIndex = 0
         var saveSeed = gameSeed
@@ -313,11 +307,6 @@ Item {
         }
         gamePage.saveState(json, saveIndex, saveSeed)
         _saved = true
-    }
-
-    function preEnd(saveOnQuit) {
-        //FIXME: is this useful? what does it do?
-        saveGameOnQuit = saveOnQuit
     }
 
     MouseArea {

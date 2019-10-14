@@ -98,27 +98,11 @@ MainView {
         }
     }
 
-    function newGame() {    //FIXME
-        tabs.selectedTabIndex=0
-        if(gamePage.loader.item)
-            gamePage.loader.item.preEnd(false)
-        gamePage.setSource("")
-        selectedGameIndex = -1
-    }
-
     function startGame(index) {
         var previousGameIndex = selectedGameIndex
         selectedGameIndex = index
         print("startGame: "+selectedGameDbName)
         pagestack.push(Qt.resolvedUrl("layout/GamePage.qml"), {gameName: selectedGameTitle})
-        // if(gamePage.loader.item) {   //FIXME
-        //     if(index===previousGameIndex) {
-        //         tabs.selectedTabIndex = 1
-        //         return
-        //     }
-        //     else
-        //         gamePage.loader.item.preEnd(true)
-        // }
         var savedGame = getSaveState(selectedGameDbName)
         var savedGameIndex = getSaveStateIndex(selectedGameDbName)
         var savedSeed = getSaveStateSeed(selectedGameDbName)
@@ -148,11 +132,6 @@ MainView {
 
     function getStats(dbName) {
         return statsDoc.contents[dbName]
-    }
-
-    function removeSaveState(dbName) {
-        print("removeSaveState")
-        setSaveState(dbName, [], 0, -1)
     }
 
     function setSaveState(dbName, json, index, savedSeed) {
