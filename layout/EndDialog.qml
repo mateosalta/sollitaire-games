@@ -1,28 +1,14 @@
 import QtQuick 2.9
 import Ubuntu.Components 1.3
-import Ubuntu.Components.Popups 1.2
+import Ubuntu.Components.Popups 1.3
 
 Dialog {
     property bool won: false
     id: endDialog
-    title: won?"Won!":"Lost..."
-    text: won?"What's next?":"... What's next?"
+    title: won?i18n.tr("Won!"):i18n.tr("Lost...")
+    text: won?i18n.tr("What's next?"):i18n.tr("... What's next?")
     Button {
-        text: "nothing"
-        gradient: UbuntuColors.greyGradient
-        onClicked: {
-            PopupUtils.close(endDialog)
-        }
-    }
-    Button {
-        text: "stats"
-        onClicked: {
-            tabs.selectedTabIndex=2
-            PopupUtils.close(endDialog)
-        }
-    }
-    Button {
-        text: "try again"
+        text: i18n.tr("Try again...")
         visible: !won
         onClicked: {
             PopupUtils.close(endDialog)
@@ -30,7 +16,7 @@ Dialog {
         }
     }
     Button {
-        text: "redeal"
+        text: i18n.tr("Play again!")
         visible: won
         onClicked: {
             PopupUtils.close(endDialog)
@@ -38,10 +24,10 @@ Dialog {
         }
     }
     Button {
-        text: "new game"
+        text: i18n.tr("Back to game list")
         onClicked: {
             PopupUtils.close(endDialog)
-            newGame()
+            pagestack.pop()
         }
     }
 }

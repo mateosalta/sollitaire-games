@@ -10,12 +10,12 @@ import "layout"
 MainView {
     // objectName for functional testing purposes (autopilot-qt5)
     objectName: "mainView"
-    
+
     // Note! applicationName needs to match the .desktop filename
     applicationName: "solitaire-games.mateo-salta"
-    
-    /* 
-     This property enables the application to change orientation 
+
+    /*
+     This property enables the application to change orientation
      when the device is rotated. The default is false.
     */
     automaticOrientation: true
@@ -25,7 +25,7 @@ MainView {
   //  headerColor: "#092200"
     backgroundColor: "#0F3602"
     //footerColor: "#1D7300"
-    
+
     width: units.gu(100)
     height: units.gu(80)
 
@@ -74,29 +74,13 @@ MainView {
             return -1
         }
     }
-    
-    Tabs {
-        id: tabs
-        anchors.fill: parent
 
-        Tab {
-            anchors.fill: parent
-            title: i18n.tr("Games")
-            page: GamesPage {
-                id: gamesPage
-            }
+    PageStack {
+        id: pagestack
+        GamesPage {
+            id: gamesPage
         }
-
-        Tab {
-            anchors.fill: parent
-            title: selectedGameIndex===-1?i18n.tr("Game"):selectedGameTitle
-            page: GamePage {
-                id: gamePage
-
-            }
-        }
-
-     
+        Component.onCompleted: push(gamesPage)
     }
 
     Repeater {
@@ -114,41 +98,23 @@ MainView {
         }
     }
 
-    function newGame() {
-        tabs.selectedTabIndex=0
-        if(gamePage.loader.item)
-            gamePage.loader.item.preEnd(false)
-        gamePage.setSource("")
-        selectedGameIndex = -1
-    }
-
     function startGame(index) {
         var previousGameIndex = selectedGameIndex
         selectedGameIndex = index
         print("startGame: "+selectedGameDbName)
-        if(gamePage.loader.item) {
-            if(index===previousGameIndex) {
-                tabs.selectedTabIndex = 1
-                return
-            }
-            else
-                gamePage.loader.item.preEnd(true)
-        }
+        pagestack.push(Qt.resolvedUrl("layout/GamePage.qml"), {gameName: selectedGameTitle})
         var savedGame = getSaveState(selectedGameDbName)
         var savedGameIndex = getSaveStateIndex(selectedGameDbName)
         var savedSeed = getSaveStateSeed(selectedGameDbName)
-        gamePage.setSource(Qt.resolvedUrl("games/"+gamesModel.get(selectedGameIndex)["path"]), {"savedGame":savedGame, "savedGameIndex": savedGameIndex, "savedSeed": savedSeed})
-        tabs.selectedTabIndex = 1
+        pagestack.currentPage.setSource(Qt.resolvedUrl("games/"+gamesModel.get(selectedGameIndex)["path"]), {"savedGame":savedGame, "savedGameIndex": savedGameIndex, "savedSeed": savedSeed})
     }
 
     function restartGame() {
-        gamePage.loader.item.init([], 0, gamePage.loader.item.gameSeed)
-        tabs.selectedTabIndex = 1
+        pagestack.currentPage.loader.item.init([], 0, pagestack.currentPage.loader.item.gameSeed)
     }
 
     function redealGame() {
-        gamePage.loader.item.init([], 0, -1)
-        tabs.selectedTabIndex = 1
+        pagestack.currentPage.loader.item.init([], 0, -1)
     }
 
     function setStats(dbName, won) {
@@ -166,11 +132,6 @@ MainView {
 
     function getStats(dbName) {
         return statsDoc.contents[dbName]
-    }
-
-    function removeSaveState(dbName) {
-        print("removeSaveState")
-        setSaveState(dbName, [], 0, -1)
     }
 
     function setSaveState(dbName, json, index, savedSeed) {

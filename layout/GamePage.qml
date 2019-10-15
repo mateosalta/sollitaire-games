@@ -1,13 +1,56 @@
 import QtQuick 2.9
 import Ubuntu.Components 1.3
-import Ubuntu.Components.Popups 1.2
+import Ubuntu.Components.Popups 1.3
 
 Page {
     id: gamePage
+    property var gameName
     property alias loader: gameLoader
     property alias item: gameLoader.item
     property bool ready: gameLoader.source==""?false:gameLoader.status == Loader.Ready
     flickable: null
+
+    header: PageHeader {
+        id: pageH
+        title: gameName
+        trailingActionBar.numberOfSlots: 4
+        trailingActionBar.actions: [
+            Action {
+                iconName: "redo"
+                text: i18n.tr("Redo")
+                enabled: gameLoader.item?gameLoader.item.hasNextMove:false
+                onTriggered: {
+                    gameLoader.item.redo()
+                }
+            },
+            Action {
+                iconName: "undo"
+                text: i18n.tr("Undo")
+                enabled: gameLoader.item?gameLoader.item.hasPreviousMove:false
+                onTriggered: {
+                    gameLoader.item.undo()
+                }
+            },
+            Action {
+                iconName: "reload"
+                text: i18n.tr("Redeal")
+                visible: ready
+                onTriggered: {
+                    redealGame()
+                    setStats(selectedGameDbName, false)
+                }
+            },
+            Action {
+                iconName: "reset"
+                text: i18n.tr("Restart")
+                visible: ready
+                onTriggered: {
+                    restartGame()
+                    setStats(selectedGameDbName, false)
+                }
+            }
+        ]
+    }
 
     NoGame {
         anchors.fill: flickable
@@ -17,7 +60,10 @@ Page {
 
     Flickable {
         id: flickable
-        anchors.fill: parent
+        anchors.left: parent.left
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.top: pageH.bottom
         contentWidth: item?item.width:0
         contentHeight: item?item.height:0
         clip: true
@@ -82,10 +128,6 @@ Page {
         setSaveState(selectedGameDbName, saveState, savedIndex, savedSeed)
     }
 
-    function removeState() {
-        removeSaveState(selectedGameDbName)
-    }
-
     function setSource(path, json) {
         if(gameLoader.source!=="") {
             if(gameLoader.item) {
@@ -99,50 +141,5 @@ Page {
         else
             gameLoader.setSource(path)
     }
-
-    head.actions: [
-        Action {
-            iconName: "undo"
-            text: i18n.tr("Undo")
-            visible: gameLoader.item?gameLoader.item.hasPreviousMove:false
-            onTriggered: {
-                gameLoader.item.undo()
-            }
-        },
-        Action {
-            iconName: "redo"
-            text: i18n.tr("Redo")
-            visible: gameLoader.item?gameLoader.item.hasNextMove:false
-            onTriggered: {
-                gameLoader.item.redo()
-            }
-        },
-        Action {
-            iconName: "home"
-            text: i18n.tr("New Game")
-            onTriggered: {
-                setStats(selectedGameDbName, false)
-                newGame()
-            }
-        },
-        Action {
-            iconName: "reload"
-            text: i18n.tr("Redeal")
-            visible: ready
-            onTriggered: {
-                redealGame()
-                setStats(selectedGameDbName, false)
-            }
-        },
-        Action {
-            iconName: "reset"
-            text: i18n.tr("Restart")
-            visible: ready
-            onTriggered: {
-                restartGame()
-                setStats(selectedGameDbName, false)
-            }
-        }
-    ]
 
 }
