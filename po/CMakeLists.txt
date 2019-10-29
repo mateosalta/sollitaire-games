@@ -1,17 +1,22 @@
 include(FindGettext)
 find_program(GETTEXT_XGETTEXT_EXECUTABLE xgettext)
+find_program(ITSTOOL_EXECUTABLE itstool)
 
 set(DOMAIN ${FULL_PROJECT_NAME})
 set(POT_FILE ${DOMAIN}.pot)
+set(POT_QML ${DOMAIN}_qml.pot)
+set(POT_XML ${DOMAIN}_xml.pot)
+set(POT_GETTTEXT ${DOMAIN}_gettext.pot)
+set(POT_NEW ${DOMAIN}_new.pot)
 file(GLOB PO_FILES *.po)
 
 # Creates the .pot file containing the translations template
-add_custom_target(${POT_FILE} ALL
-    COMMENT "Generating translation template"
+add_custom_target(${POT_QML} ALL
+    COMMENT "Generating translation template from QML"
     COMMAND ${INTLTOOL_EXTRACT} --update --type=gettext/ini
         --srcdir=${CMAKE_SOURCE_DIR} ${DESKTOP_FILE_NAME}.in
 
-    COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${POT_FILE}
+    COMMAND ${GETTEXT_XGETTEXT_EXECUTABLE} -o ${POT_QML}
         -D ${CMAKE_CURRENT_SOURCE_DIR}
         -D ${CMAKE_CURRENT_BINARY_DIR}
         --from-code=UTF-8
@@ -19,7 +24,19 @@ add_custom_target(${POT_FILE} ALL
         --keyword=tr --keyword=tr:1,2 --keyword=N_ --keyword=_
         --package-name='${DOMAIN}'
         ${I18N_SRC_FILES}
-    COMMAND ${CMAKE_COMMAND} -E copy ${POT_FILE} ${CMAKE_CURRENT_SOURCE_DIR})
+)
+add_custom_target(${POT_FILE} ALL
+    COMMENT "Generating translation template from XML and merging"
+    # XML
+    COMMAND itstool -o ${POT_XML} ${XML_SRC_FILES}
+
+    COMMAND msgcat -o ${POT_GETTTEXT} ${POT_XML} ${POT_QML} --lang=en --strict
+
+    COMMAND msgmerge -N ${CMAKE_CURRENT_SOURCE_DIR}/${POT_FILE} ${POT_GETTTEXT} > ${POT_NEW}
+
+    COMMAND mv ${POT_NEW} ${CMAKE_CURRENT_SOURCE_DIR}/${POT_FILE}
+)
+
 
 # Builds the binary translations catalog for each language
 # it finds source translations (*.po) for

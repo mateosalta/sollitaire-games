@@ -1,3 +1,4 @@
 {
-	"template": "pure-qml-cmake"
+	"template": "pure-qml-cmake",
+	"dependencies_build": ["itstool"]
 }

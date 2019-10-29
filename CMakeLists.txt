@@ -33,7 +33,8 @@ execute_process(
 
 configure_file(manifest.json.in ${CMAKE_CURRENT_BINARY_DIR}/manifest.json)
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/manifest.json DESTINATION ${CMAKE_INSTALL_PREFIX})
-# install(FILES ${PROJECT_NAME}.apparmor DESTINATION ${DATA_DIR})
+install(FILES ${PROJECT_NAME}.apparmor DESTINATION ${DATA_DIR})
+install(FILES ${PROJECT_NAME}.qml DESTINATION ${DATA_DIR})
 install(DIRECTORY components DESTINATION ${DATA_DIR})
 install(DIRECTORY data DESTINATION ${DATA_DIR})
 install(DIRECTORY games DESTINATION ${DATA_DIR})
@@ -41,8 +42,10 @@ install(DIRECTORY layout DESTINATION ${DATA_DIR})
 install(DIRECTORY svg DESTINATION ${DATA_DIR})
 
 # Translations
-file(GLOB_RECURSE I18N_SRC_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/po components/*.qml "solitaire-games.qml")
+file(GLOB_RECURSE I18N_SRC_FILES RELATIVE ${CMAKE_CURRENT_SOURCE_DIR}/po components/*.qml "solitaire-games.qml" games/*.qml layout/*.qml)
 list(APPEND I18N_SRC_FILES ${DESKTOP_FILE_NAME}.in.h)
+FILE(GLOB XML_SRC_FILES data/games.xml)
+FILE(GLOB PREVIOUS_POT po/${FULL_PROJECT_NAME}.pot)
 
 find_program(INTLTOOL_MERGE intltool-merge)
 if(NOT INTLTOOL_MERGE)
@@ -51,6 +54,10 @@ endif()
 find_program(INTLTOOL_EXTRACT intltool-extract)
 if(NOT INTLTOOL_EXTRACT)
     message(FATAL_ERROR "Could not find intltool-extract, please install the intltool package")
+endif()
+find_program(ITSTOOL itstool)
+if(NOT ITSTOOL)
+    message(FATAL_ERROR "Could not find itstool, please install the itstool package")
 endif()
 
 add_custom_target(${DESKTOP_FILE_NAME} ALL
@@ -61,7 +68,7 @@ add_custom_target(${DESKTOP_FILE_NAME} ALL
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/${DESKTOP_FILE_NAME} DESTINATION ${DATA_DIR})
 
-# add_subdirectory(po)
+add_subdirectory(po)
 
 # # Make source files visible in qtcreator
 # # We don't need to add plugin sources here as they get exposed
