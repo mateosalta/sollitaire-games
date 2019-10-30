@@ -4,12 +4,12 @@
     "framework": "ubuntu-sdk-16.04",
     "hooks": {
         "solitaire-games": {
-            "apparmor": "solitaire-games.json",
+            "apparmor": "solitaire-games.apparmor",
             "desktop": "solitaire-games.desktop"
         }
     },
     "maintainer": "Sam Segers <sam.sgrs@gmail.com>",
     "name": "solitaire-games.mateo-salta",
     "title": "solitaire-games",
-    "version": "0.5"
+    "version": "0.6.3"
 }
