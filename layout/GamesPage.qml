@@ -48,10 +48,12 @@ Page {
                 actions: [
                     Action {
                         iconName: "info"
+                        text: i18n.tr("Info")
                         onTriggered: PopupUtils.open(infoOrRulesSheed, parent, {"index":index,"gameTitle":gameTitle,"mainText":gameInfo})
                     },
                     Action {
                         iconName: "view-list-symbolic"
+                        text: i18n.tr("Rules")
                         onTriggered: PopupUtils.open(infoOrRulesSheed, parent, {"index":index,"gameTitle":gameTitle,"mainText":gameRules})
                     }
                 ]
